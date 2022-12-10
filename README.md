@@ -78,8 +78,6 @@ This repository includes files with plain SQL that can be used to recreate a dat
 
 ## 👥 Authors <a name="authors"></a>
 
-> Mention all of the collaborators of this project.
-
 👤 **Mahmoud Rizk**
 
 - GitHub: [@Elerqsousy](https://github.com/Elerqsousy)
