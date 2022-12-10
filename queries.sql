@@ -117,12 +117,18 @@ INNER JOIN owners ON owner_id = owners.id
 WHERE owners.full_name =  'Dean Winchester' AND escape_attempts=0;
 
 -- Who owns the most animals?
-SELECT full_name FROM (SELECT full_name, COUNT(animals.name) as animals_count FROM animals
-INNER JOIN owners ON owner_id = owners.id
-GROUP BY owners.full_name) AS animals_per_owner 
-WHERE animals_count = (SELECT max(animals_count) FROM (SELECT full_name, COUNT(animals.name) as animals_count FROM animals
-INNER JOIN owners ON owner_id = owners.id
-GROUP BY owners.full_name) AS animals_per_owner);
+SELECT full_name FROM (
+  SELECT full_name, COUNT(animals.name) as animals_count FROM animals
+  INNER JOIN owners ON owner_id = owners.id
+  GROUP BY owners.full_name
+) AS animals_per_owner 
+WHERE animals_count = (
+  SELECT max(animals_count) FROM (
+    SELECT full_name, COUNT(animals.name) as animals_count FROM animals
+    INNER JOIN owners ON owner_id = owners.id
+    GROUP BY owners.full_name
+    ) AS animals_per_owner
+);
 
 ---------------------------------------------------------------------------------------
 
