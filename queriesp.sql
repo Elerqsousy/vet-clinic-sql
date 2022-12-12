@@ -137,7 +137,7 @@ WHERE a.id = ( SELECT animal_id FROM visits
   LEFT JOIN vets ON visits.vet_id = vets.id
   WHERE vets.name = 'William Tatcher' 
   GROUP BY animal_id
-  ORDER BY MAX(date_of_visits) DESC LIMIT 1
+  ORDER BY MAX(date_of_visits) LIMIT 1
 );
 
 -- How many different animals did Stephanie Mendez see?
@@ -157,40 +157,18 @@ JOIN vets ON vets.id = vet_id
 WHERE vets.name = 'Stephanie Mendez' AND date_of_visits BETWEEN '20200401' AND '20200901';
 
 -- What animal has the most visits to vets?
-SELECT name FROM (
-  SELECT COUNT(date_of_visits) AS count, animals.name as name FROM animals
-  LEFT JOIN visits ON animals.id = animal_id
-  GROUP BY animals.name
-) as tt1
-GROUP BY name
-ORDER BY MAX(count) DESC LIMIT 1;
+SELECT COUNT(date_of_visits), animals.name FROM animals
+LEFT JOIN visits ON animals.id = animal_id
+GROUP BY animals.name
+ORDER BY COUNT(date_of_visits) LIMIT 1;
 
 -- Who was Maisy Smith's first visit?
-SELECT name FROM animals 
-Where id = (SELECT animal_id FROM visits
-LEFT JOIN vets ON vets.id = vet_id
-WHERE vets.name = 'Maisy Smith'
-ORDER BY date_of_visits LIMIT 1);
+
 
 -- Details for most recent visit: animal information, vet information, and date of visit.
-SELECT * FROM animals
-LEFT JOIN visits ON animal_id = animals.id
-FULL JOIN vets on vets.id = visits.vet_id
-ORDER BY date_of_visits DESC LIMIT 1;
+
 
 -- How many visits were with a vet that did not specialize in that animal's species?
-SELECT vets.name AS "Vet", COUNT(*) FROM visits 
-LEFT JOIN vets ON visits.vet_id = vets.id
-LEFT JOIN specializations ON vets.id = specializations.vet_id 
-LEFT JOIN species ON specializations.species_id = species.id 
-WHERE specializations.species_id IS NULL 
-OR specializations.species_id != species.id 
-GROUP BY vets.name;
+
 
 -- What specialty should Maisy Smith consider getting? Look for the species she gets the most.
-SELECT vets.name AS "Vet", species.name AS "Specie", COUNT(*) FROM visits 
-LEFT JOIN vets ON visits.vet_id = vets.id
-LEFT JOIN animals ON visits.animal_id = animals.id 
-LEFT JOIN species ON animals.species_id = species.id
-WHERE vets.name = 'Maisy Smith' 
-GROUP BY vets.name, species.name LIMIT 1;
