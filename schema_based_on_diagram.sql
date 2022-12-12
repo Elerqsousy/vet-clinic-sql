@@ -17,3 +17,21 @@ CREATE TABLE medical_histories (
   REFERENCES patients (id)
   ON DELETE CASCADE
 );
+
+-- Table for Treatments
+CREATE TABLE treatments (
+  id INT NOT NULL PRIMARY KEY,
+  type VARCHAR,
+  name VARCHAR
+);
+
+-- Table for invoice items
+CREATE TABLE invoice_items (
+  id INT NOT NULL PRIMARY KEY,
+  unit_price DECIMAL,
+  quantity INT,
+  total_price DECIMAL,
+  invoice_id INT REFERENCES invoices(id),
+  treatment_id INT REFERENCES treatments(id)
+);
+
