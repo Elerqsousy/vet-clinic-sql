@@ -64,5 +64,11 @@ CREATE TABLE medical_histories_treatments (
 );
 
 -- CREATE FK INDEXES
-CREATE INDEX mh_index
+CREATE INDEX medical_history_invoices_index
 ON invoices (medical_history_id);
+
+CREATE INDEX patients_index ON medical_histories(patient_id);
+
+CREATE INDEX invoice_index ON invoice_items(invoice_id);
+
+CREATE INDEX treatment_index ON invoice_items(treatment_id);
