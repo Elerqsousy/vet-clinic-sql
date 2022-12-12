@@ -194,3 +194,34 @@ LEFT JOIN animals ON visits.animal_id = animals.id
 LEFT JOIN species ON animals.species_id = species.id
 WHERE vets.name = 'Maisy Smith' 
 GROUP BY vets.name, species.name LIMIT 1;
+
+---------------------------------------------------
+-- PERFORMANCE 
+
+-- All team devices has high specs and couldn't get anything above ~300
+-- that is the reason for the low performance scores for the ((Excution time)).
+EXPLAIN ANALYZE SELECT COUNT(*) FROM visits where animal_id = 4
+
+--QUERIES:
+--Before
+EXPLAIN ANALYZE SELECT COUNT(*) FROM visits where animal_id = 4; --Execution Time: 314.654ms
+
+--After
+EXPLAIN ANALYZE SELECT COUNT(*) FROM visits where animal_id = 4; --Execution Time: 63.073ms
+
+
+
+--Before
+EXPLAIN ANALYZE SELECT * FROM visits where vet_id = 2; -- Execution Time: 823.387ms
+
+--After
+EXPLAIN ANALYZE SELECT * FROM visits where vet_id = 2; -- Execution Time: 587.945ms
+
+
+
+
+--Before
+EXPLAIN ANALYZE SELECT * FROM owners where email = 'owner_18327@mail.com'; -- Execution Time: 295.548ms
+
+--After
+EXPLAIN ANALYZE SELECT * FROM owners where email = 'owner_18327@mail.com'; -- Execution Time: 0.223ms
