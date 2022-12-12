@@ -204,7 +204,24 @@ EXPLAIN ANALYZE SELECT COUNT(*) FROM visits where animal_id = 4
 
 --QUERIES:
 --Before
-EXPLAIN ANALYZE SELECT COUNT(*) FROM visits where animal_id = 4; --Execution Time: 
+EXPLAIN ANALYZE SELECT COUNT(*) FROM visits where animal_id = 4; --Execution Time: 314.654ms
 
 --After
-EXPLAIN ANALYZE SELECT COUNT(*) FROM visits where animal_id = 4; --Execution Time: 
+EXPLAIN ANALYZE SELECT COUNT(*) FROM visits where animal_id = 4; --Execution Time: 63.073ms
+
+
+
+--Before
+EXPLAIN ANALYZE SELECT * FROM visits where vet_id = 2; -- Execution Time: 823.387ms
+
+--After
+EXPLAIN ANALYZE SELECT * FROM visits where vet_id = 2; -- Execution Time: 587.945ms
+
+
+
+
+--Before
+EXPLAIN ANALYZE SELECT * FROM owners where email = 'owner_18327@mail.com'; -- Execution Time: 295.548ms
+
+--After
+EXPLAIN ANALYZE SELECT * FROM owners where email = 'owner_18327@mail.com'; -- Execution Time: 0.223ms
