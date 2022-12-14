@@ -81,7 +81,18 @@ This repository includes files with plain SQL that can be used to recreate a dat
 👤 **Mahmoud Rizk**
 
 - GitHub: [@Elerqsousy](https://github.com/Elerqsousy)
-- LinkedIn: [Mahmoud El Erqsousy](https://www.linkedin.com/in/mahmoud-rizk-elerqsousy/)
+- LinkedIn: [Mahmoud (Riz) El Erqsousy](https://www.linkedin.com/in/mahmoud-rizk-elerqsousy/)
+
+👤 **Jeremiah Melfah**
+
+- GitHub: [GitHub](https://github.com/Jaymelfah)
+- LinkedIn: [LinkedIn](https://www.linkedin.com/in/jeremiah-ekow-melfah-a4402a161/)
+
+👤 **Ahmed Nazir Musah**
+
+- GitHub: [@ahmednazirmusah](https://github.com/AhmedNazirMusah)
+- Twitter: [@ahmednazirmush](https://twitter.com/ahmednazirmusah)
+- LinkedIn: [LinkedIn](https://www.linkedin.com/in/ahmed-nazir-musah-529956214)
 
 <p align="right"><a href="#readme-top">back to top</a></p>
 
